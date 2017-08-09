@@ -1,5 +1,8 @@
 <?php
 
+// Wahrscheinlich die Hilfsliste, zu Hause nochmal damit auseinander setzen.
+// Auf englisch = selection sort.
+
 function selectionSort($array)
 {
     for ($i=0; $i<count($array); $i++)
