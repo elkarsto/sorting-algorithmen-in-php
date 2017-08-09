@@ -1,6 +1,8 @@
 <?php
 
 // Array sollte in jeder Aufgabe gleich aussehen!!!
+// Eventuell einfacherer erklärung zu dem Thema und Lösungsansatz:
+// https://pageconfig.com/post/implementing-quicksort-in-php
 
 $unsorted = array(43,21,2,1,9,24,2,99,23,8,7,114,92,5);
 
