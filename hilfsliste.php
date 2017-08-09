@@ -1,3 +1,5 @@
+<?php
+
 function selectionSort($array)
 {
     for ($i=0; $i<count($array); $i++)
@@ -17,3 +19,4 @@ function selectionSort($array)
 
 //Zur Kontrolle
 print_r(selectionSort(array('F', 'A', 'B', 'E', 'D', 'C', 'H', 'G')));
+?>
