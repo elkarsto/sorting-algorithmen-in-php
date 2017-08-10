@@ -1,5 +1,7 @@
 <?php
 
+//funktioniert nicht.
+
 $sort = array(3, 5, 7, 1, 2, 9, 4, 6, 9, 8);
 $temp = 0;
 
