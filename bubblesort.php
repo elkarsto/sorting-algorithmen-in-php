@@ -1,36 +1,4 @@
 <?php
-
-// Herausfinden wie lange jede Berechnung der Ausgabe des Arrays gedauert hat.
-// Mithilfe von microtime(true)
-// 
-// microtime(true) returns the unix timestamp plus milliseconds as a float
-
-//$starttime = microtime(true);
-
-/* do stuff here */
-
-//$endtime = microtime(true);
-//$timediff = $endtime - $starttime;
-
-/*
-	function secondsToTime($s)
-{
-    $h = floor($s / 3600);
-    $s -= $h * 3600;
-    $m = floor($s / 60);
-    $s -= $m * 60;
-    return $h.':'.sprintf('%02d', $m).':'.sprintf('%02d', $s);
-}
-
-*/
-
-returned als Stunde:Minute:Sek 
-
-
-
-*/
-
-
 @ini_set('display_errors', true);
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
 ?>
@@ -46,57 +14,68 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
             <a href="index.php"><button type="button" id="Sortieren">Startseite</button></a><a href="bubblesort_1.php"><button type="button" id="Next">Sortieren</button></a>
         </form><br>
 
-<?php
+        <?php
 
-function rand_num() {
-    return rand(1, 1000);
-}
-
-for ($i = 0; $i < 1000; $i++) {
-    $number[$i] = rand_num();
-}
-echo "Ausgabe des unsortierten Arrays:";
-echo '<pre>';
-print_r($number);
-echo '</pre>';
-
-function numbers($number) {
-
-    $anz = count($number);
-    $temp = '';
-
-    for ($a = 0; $a < $anz; $a++) {
-
-        for ($b = 0; $b < $anz - 1; $b++) {
-
-            if ($number[$b + 1] < $number[$b]) {
-
-                $temp = $number[$b];
-                $number[$b] = $number[$b + 1];
-                $number[$b + 1] = $temp;
-            }
+        function rand_num() {
+            return rand(1, 1000);
         }
-    }
-    return $number;
-}
 
-echo '<pre>';
-$sortiert = numbers($number);
-print_r($sortiert);
-echo '</pre>';
+        for ($i = 0; $i < 10000; $i++) {
+            $number[$i] = rand_num();
+        }
+        echo "Ausgabe des unsortierten Arrays:";
+        echo '<pre>';
+        //print_r($number);
+        echo '</pre>';
 
-echo '<pre>';
-$sortiert = numbers(array_reverse($sortiert));
-print_r($sortiert);
-echo '</pre>';
+        echo 'Das ist der unsortierte Array gewesen!';
 
-echo '<pre>';
-$sortiert = numbers($sortiert);
-print_r($sortiert);
-echo '</pre>';
+        function numbers($number) {
 
-echo "Did nothing in $time seconds\n";
+            $anz = count($number);
+            $temp = '';
 
-?>
+            for ($a = 0; $a < $anz; $a++) {
+
+                for ($b = 0; $b < $anz - 1 - $a; $b++) {
+
+                    if ($number[$b + 1] < $number[$b]) {
+
+                        $temp = $number[$b];
+                        $number[$b] = $number[$b + 1];
+                        $number[$b + 1] = $temp;
+                    }
+                    //echo $a . " " . $b . "<br/>";
+                }
+            }
+            return $number;
+        }
+
+        echo '<pre>';
+        $start = microtime(true);
+        $sortiert = numbers($number);
+        //print_r($sortiert);
+        $time_elapsed_secs = microtime(true) - $start;
+        echo $time_elapsed_secs;
+        echo '</pre>';
+
+        echo '<pre>';
+        $start = microtime(true);
+        $sortiert = numbers(array_reverse($sortiert));
+        //print_r($sortiert);
+        $time_elapsed_secs = microtime(true) - $start;
+        echo $time_elapsed_secs;
+        echo '</pre>';
+
+        echo '<pre>';
+        $start = microtime(true);
+        $sortiert = numbers($sortiert);
+        //print_r($sortiert);
+        $time_elapsed_secs = microtime(true) - $start;
+        echo $time_elapsed_secs;
+        echo '</pre>';
+        ?>
+
+
     </body>
 </html>
