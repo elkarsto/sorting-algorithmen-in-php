@@ -20,7 +20,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
             return rand(1, 1000);
         }
 
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 100000; $i++) {
             $number[$i] = rand_num();
         }
         echo "Ausgabe des unsortierten Arrays:";
@@ -35,19 +35,26 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
             $anz = count($number);
             $temp = '';
 
-            for ($a = 0; $a < $anz; $a++) {
-
-                for ($b = 0; $b < $anz - 1 - $a; $b++) {
+            $count = 0;
+            $max = $anz;
+            //for ($a = 0; $a < $anz; $a++) {
+            do {
+                $max = 0;
+                // $getauscht = false;
+                for ($b = 0; $b < $anz - 1; $b++) {
 
                     if ($number[$b + 1] < $number[$b]) {
-
+                        // $getauscht = true;
+                        $max = $b;
                         $temp = $number[$b];
                         $number[$b] = $number[$b + 1];
                         $number[$b + 1] = $temp;
                     }
-                    //echo $a . " " . $b . "<br/>";
+                    // echo $anz . " " . $max . " " . $b . "<br/>";
                 }
-            }
+                // $count++;
+                $anz = $max + 1;
+            } while ($max > 0);
             return $number;
         }
 
