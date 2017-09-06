@@ -1,0 +1,44 @@
+<?php
+
+
+
+$array=array();
+
+    function rand_num() {
+                return rand(10, 99);
+            }
+            for ($i = 0; $i < 10; $i++) {
+                $array[$i] = rand_num();
+            }
+            echo "Ausgabe des unsortierten Arrays:";
+            echo '<pre>';
+            print_r($array);
+            echo '</pre>';
+            echo implode(" - ", $array) . "<br/>\n";
+
+
+            
+            $boarderright = count($array) ;
+            echo $borderright;
+            echo "</br>";
+
+            for ($i = 0; $i < $borderright -1; $i++){
+                for ($a = 0; $a < $borderright-1; $a++){
+
+                    if($array[$a] > $array[$a+1]){
+                        $temp = $array[$a+1];
+                        $array[$a+1] = $array[$a];
+                        $array[$a] = $temp;
+                    }
+                }
+            }
+            
+            echo '<pre>';
+            //$start = microtime(true);
+            //$sortiert = quicksort($array);
+            print_r($array);
+            //$time_elapsed_secs = microtime(true) - $start;
+            //echo $time_elapsed_secs;
+            echo '</pre>';
+
+?>
